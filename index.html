@@ -116,8 +116,7 @@
           <i class="fa-solid fa-heart"></i>
         </div>
 
-        <span class="day"></span>
-        <span class="month"></span>
+    
       </div>
     </div>
 
@@ -158,7 +157,7 @@
             </div>
             <div class="right">
               <div class="love__img">
-                <img src="./images/pngtree-birthday-greetings-of-meng-pig-png-image_4397734.jpg" alt="" width="220">
+                <img src="./images/" alt="" width="220">
               </div>
               <div class="text__letter">
                 <p></p>
@@ -328,36 +327,7 @@
             })
         $(".box__letter").slideUp();
         $(".letter__border").slideUp();
-    })
-
-    //mobile
-    function mobile(){
-        const app = {
-            timeout: function(txt, dom){
-                let currentIndex = 0;
-                let charArr = txt.split('')
-                intervalMobile = setInterval(function(){
-                    if(currentIndex < charArr.length){
-                        dom.textContent += charArr[currentIndex];
-                        currentIndex++;
-                    }
-                    else{
-                        clearInterval(intervalMobile)
-                    }
-                },200)
-            }
-        }
-        return app
-    }
-    const fcMobile = mobile()
-    if(window.innerWidth < 768){
-        setTimeout(()=>{
-            fcMobile.timeout("26", document.querySelector(".day"))
-        },5000)
-        setTimeout(()=>{
-            fcMobile.timeout("10", document.querySelector(".month"))
-        },6000)
-    }
+    })    
   </script>
 </body>
 </html>
