@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy birthday</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+</head>
+<body>
+  <audio id="bgm" preload="auto" src="assets/happy-birthday-254480 (2).mp3" loop playsinline></audio>
+  <!-- ===== PASS GATE ===== -->
+  <section id="passGate" class="gate">
+    <div class="gate-card">
+      <h1>NHẬP PASS NGÀY SINH</h1>
+      <p class="gate-sub">Pass là <b>ngày sinh (2 số)</b> – ví dụ: 01, 11, 28…</p>
+
+      <div id="passDisplay" class="gate-display">&nbsp;</div>
+
+      <div class="gate-pad" id="gatePad">
+        <!-- các phím sẽ tạo bằng JS -->
+      </div>
+
+      <p class="gate-hint">Gợi ý: nhập 2 số rồi nhấn ✓</p>
+    </div>
+  </section>
+  <!-- ===== /PASS GATE ===== -->
+ 
+  <!-- Trang chính gốc của bạn (ẩn lúc đầu để chờ pass) -->
+  <div id="wrapper" style="display:none">
+    <div class="flag__birthday">
+      <img src="./images/1.png" alt="" width="350" class="flag__left">
+      <img src="./images/1.png" alt="" width="350" class="flag__right">
+    </div>
+    <div class="content">
+      <div class="left">
+        <div class="title">
+          <h1 class="happy">
+            <span style="--t: 4s;">H</span>
+            <span style="--t: 4.2s;">a</span>
+            <span style="--t: 4.4s;">p</span>
+            <span style="--t: 4.6s;">p</span>
+            <span style="--t: 4.8s;">
+              y
+              <div class="hat">
+                <img src="./images/hat.png" alt="" width="130">
+              </div>
+            </span>
+          </h1>
+          <h1 class="birthday">
+            <span style="--t: 5s;">B</span>
+            <span style="--t: 5.2s;">i</span>
+            <span style="--t: 5.4s;">r</span>
+            <span style="--t: 5.6s;">t</span>
+            <span style="--t: 5.8s;">h</span>
+            <span style="--t: 6s;">d</span>
+            <span style="--t: 6.2s;">a</span>
+            <span style="--t: 6.4s;">y</span>
+          </h1>
+        </div>
+
+        <div class="date__of__birth">
+          <span></span>
+        </div>
+
+        <div class="btn">
+          <button id="btn__letter">
+            Chị ơi có thư nè :)))
+            <i class="fa-regular fa-envelope"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="box__account">
+          <div class="image">
+            <!-- nguyên ảnh base64 y như file bạn -->
+            <img src="images/43ece725-507e-4999-afc3-289607b7e2ea.jpg" alt="">
+          </div>
+          <div class="name">
+            <i class="fa-solid fa-heart"></i>
+            <span>Chị Hà</span>
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <div class="balloon_one">
+            <img width="100px" src="./images/balloon1.png" alt="">
+          </div>
+          <div class="balloon_two">
+            <img width="100px" src="./images/balloon2.png" alt="">
+          </div>
+        </div>
+
+        <div class="cricle">
+          <div class="text__cricle">
+            <span style="--i: 1;">h</span>
+            <span style="--i: 2;">a</span>
+            <span style="--i: 3;">p</span>
+            <span style="--i: 4;">p</span>
+            <span style="--i: 5;">y</span>
+            <span style="--i: 6;">-</span>
+            <span style="--i: 7;">b</span>
+            <span style="--i: 8;">i</span>
+            <span style="--i: 9;">r</span>
+            <span style="--i: 10;">t</span>
+            <span style="--i: 11;">h</span>
+            <span style="--i: 12;">d</span>
+            <span style="--i: 13;">a</span>
+            <span style="--i: 14;">y</span>
+            <span style="--i: 15;">-</span>
+          </div>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+
+        <span class="day"></span>
+        <span class="month"></span>
+      </div>
+    </div>
+
+    <div class="decorate_star star1" style="--t: 15s;"></div>
+    <div class="decorate_star star2" style="--t: 15.2s;"></div>
+    <div class="decorate_star star3" style="--t: 15.4s;"></div>
+    <div class="decorate_star star4" style="--t: 15.6s;"></div>
+    <div class="decorate_star star5" style="--t: 15.8s;"></div>
+
+    <div class="decorate_flower--one" style="--t: 15s;">
+      <img width="20" src="./images/decorate_flower.png" alt="">
+    </div>
+    <div class="decorate_flower--two" style="--t: 15.3s;">
+      <img width="20" src="./images/decorate_flower.png" alt="">
+    </div>
+    <div class="decorate_flower--three" style="--t: 15.6s;">
+      <img width="20" src="./images/decorate_flower.png" alt="">
+    </div>
+
+    <div class="decorate_bottom">
+      <img src="./images/decorate.png" alt="" width="100">
+    </div>
+    <div class="smiley__icon">
+      <img src="./images/smiley_icon.png" alt="" width="100">
+    </div>
+
+    <div class="box__letter">
+      <div class="letter__border">
+        <div class="letter">
+          <div class="title__letter"></div>
+          <div class="content__letter">
+            <div class="left">
+              <img id="heart__letter" src="./images/c0236a02-4e62-429e-9281-06e4c4227c4f.png" alt="">
+              <img class="heart heart_1" style="--t: 0.2s" width="10" src="./images/heart.png" alt="">
+              <img class="heart heart_2" style="--t: 0.4s" width="10" src="./images/heart.png" alt="">
+              <img class="heart heart_3" style="--t: 0.6s" width="10" src="./images/heart.png" alt="">
+              <img class="heart heart_4" style="--t: 0.8s" width="10" src="./images/heart.png" alt="">
+            </div>
+            <div class="right">
+              <div class="love__img">
+                <img src="./images/pngtree-birthday-greetings-of-meng-pig-png-image_4397734.jpg" alt="" width="220">
+              </div>
+              <div class="text__letter">
+                <p></p>
+              </div>
+              <img id="mewmew" width="80" src="./images/mewmew.gif" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="close"><i class="fa-solid fa-xmark"></i></div>
+      </div>
+    </div>
+  </div><!-- /#wrapper -->
+
+ <!-- ===== PASS JS (thêm) ===== -->
+<script>
+  // ĐỔI PASS NGÀY SINH TẠI ĐÂY (2 CHỮ SỐ)
+  const PASS_DAY = "28";
+
+  // Audio
+  const audioEl = document.getElementById('bgm');
+  let audioPrimed = false;   // đã mồi audio chưa?
+
+  // Mồi audio (phát ở trạng thái mute) ngay lần bấm phím đầu tiên
+  async function primeAudioOnce(){
+    if (audioPrimed || !audioEl) return;
+    try {
+      audioEl.muted = true;          // phát mute để qua policy
+      audioEl.currentTime = 0;
+      await audioEl.play();          // đã có gesture (click phím) nên hợp lệ
+      audioPrimed = true;
+    } catch(e) {
+      console.log('Prime audio fail:', e?.name || e);
+    }
+  }
+
+  // Khi pass đúng → bỏ mute để nghe được ngay
+  function unmuteAndContinue(){
+    if (!audioEl) return;
+    audioEl.muted = false;     // BỎ MUTE NGAY TRONG CÙNG SỰ KIỆN CLICK
+    audioEl.volume = 0.85;
+  }
+
+  // tạo keypad
+  const digits = [1,2,3,4,5,6,7,8,9,'←',0,'✓'];
+  const $pad = $("#gatePad");
+  const $display = $("#passDisplay");
+  let buf = "";
+
+  digits.forEach(d=>{
+    const $k = $(`<div class="key${isNaN(d)?' ctrl':''}">${d}</div>`);
+    $k.on("click", ()=>{
+      // mồi audio ngay lần bấm phím bất kỳ
+      primeAudioOnce();
+
+      if(d==='←'){ buf = buf.slice(0,-1); render(); return; }
+      if(d==='✓'){ tryUnlock(); return; }
+      if(buf.length>=2) return;
+      buf += String(d);
+      render();
+    });
+    $pad.append($k);
+  });
+
+  function render(){
+    $display.text(buf.length ? buf.padStart(2,'0') : "\u00A0");
+  }
+
+  function tryUnlock(){
+    if (buf.padStart(2,'0') === PASS_DAY){
+      // Bỏ mute + hiện trang
+      unmuteAndContinue();           // 🔊 nghe nhạc NGAY
+      $("#passGate").addClass("hide");
+      $("#wrapper").fadeIn(350);
+    }else{
+      $display.addClass("shake");
+      setTimeout(()=> $display.removeClass("shake"), 400);
+      buf = ""; render();
+    }
+  }
+</script>
+<!-- ===== /PASS JS ===== -->
+
+
+  <!-- ===== SCRIPT GỐC (giữ nguyên) ===== -->
+  <script>
+    let datetxt = "28/09/2000";
+    let datatxtletter = "Chúc mừng sinh nhật chị Hà 🎉! Tuổi mới chúc chị luôn xinh đẹp, hạnh phúc, sự nghiệp thuận lợi và đặc biệt là tình yêu cùng anh Tươi ngày càng bền chặt  💕";
+    let titleLetter = "Dear Chị Hà :)))";
+    let charArrDate = datetxt.split('');
+    let charArrDateLetter = datatxtletter.split('');
+    let charArrTitle = titleLetter.split('');
+    let currentIndex = 0;
+    let currentIndexLetter = 0;
+    let currentIndexTitle = 0;
+    let date__of__birth = document.querySelector(".date__of__birth span");
+    let text__letter = document.querySelector(".text__letter p");
+    setTimeout(function(){
+        timeDatetxt = setInterval(function(){
+            if(currentIndex < charArrDate.length){
+                date__of__birth.textContent += charArrDate[currentIndex];
+                currentIndex++;
+            }
+            else{
+                let i = document.createElement("i");
+                i.className = "fa-solid fa-star"
+                document.querySelector(".date__of__birth").prepend(i)
+                document.querySelector(".date__of__birth").appendChild(i.cloneNode(true))
+                clearInterval(timeDatetxt)
+            }
+        },100)
+    },12000)
+
+    var intervalContent;
+    var intervalTitle;
+    $("#btn__letter").on("click", function(){
+        $(".box__letter").slideDown()
+        setTimeout(function(){
+            $(".letter__border").slideDown();
+        },1000)
+        setTimeout(function(){
+            intervalTitle = setInterval(function(){
+                if(currentIndexTitle < charArrTitle.length){
+                    document.querySelector(".title__letter").textContent += charArrTitle[currentIndexTitle];
+                    let i = document.createElement("i");
+                    i.className = "fa-solid fa-heart"
+                    document.querySelector(".title__letter").appendChild(i)
+                    currentIndexTitle++;
+                }
+                else{
+                    clearInterval(intervalTitle)
+                }
+            },100)
+        },2000)
+        setTimeout(function(){
+            document.querySelector("#heart__letter").classList.add("animationOp");
+            document.querySelector(".love__img").classList.add("animationOp");
+            document.querySelector("#mewmew").classList.add("animationOp");
+        },2800)
+        setTimeout(function(){
+            document.querySelectorAll(".heart").forEach((item)=>{
+                item.classList.add("animation")
+            })
+        },3500)
+        setTimeout(function(){
+            intervalContent = setInterval(function(){
+                if(currentIndexLetter < charArrDateLetter.length){
+                    text__letter.textContent += charArrDateLetter[currentIndexLetter];
+                    currentIndexLetter++;
+                }
+                else{
+                    clearInterval(intervalContent)
+                }
+            },50)
+        },6000)
+    })
+    $(".close").on("click", function(){
+        clearInterval(intervalContent)
+        document.querySelector(".title__letter").textContent = "";
+        text__letter.textContent = "";
+        currentIndexLetter = 0
+        currentIndexTitle = 0
+        document.querySelector("#heart__letter").classList.remove("animationOp");
+        document.querySelector(".love__img").classList.remove("animationOp");
+        document.querySelector("#mewmew").classList.remove("animationOp");
+        document.querySelectorAll(".heart").forEach((item)=>{
+                item.classList.remove("animation")
+            })
+        $(".box__letter").slideUp();
+        $(".letter__border").slideUp();
+    })
+
+    //mobile
+    function mobile(){
+        const app = {
+            timeout: function(txt, dom){
+                let currentIndex = 0;
+                let charArr = txt.split('')
+                intervalMobile = setInterval(function(){
+                    if(currentIndex < charArr.length){
+                        dom.textContent += charArr[currentIndex];
+                        currentIndex++;
+                    }
+                    else{
+                        clearInterval(intervalMobile)
+                    }
+                },200)
+            }
+        }
+        return app
+    }
+    const fcMobile = mobile()
+    if(window.innerWidth < 768){
+        setTimeout(()=>{
+            fcMobile.timeout("26", document.querySelector(".day"))
+        },5000)
+        setTimeout(()=>{
+            fcMobile.timeout("10", document.querySelector(".month"))
+        },6000)
+    }
+  </script>
+</body>
+</html>
